@@ -96,7 +96,7 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 bg-white/[0.04] p-1.5 rounded-full border border-white/10 backdrop-blur-md">
+        <nav className="hidden lg:flex items-center gap-1 bg-white/4 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.substring(1);
             return (
@@ -113,7 +113,7 @@ const Navbar = () => {
                 {isActive && (
                   <motion.div
                     layoutId="activeNavTab"
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-sm shadow-indigo-500/30 -z-10"
+                    className="absolute inset-0 bg-linear-to-r from-indigo-600 to-purple-600 rounded-full shadow-sm shadow-indigo-500/30 -z-10"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -124,8 +124,8 @@ const Navbar = () => {
         </nav>
 
         {/* Action Button */}
-        <div className="hidden sm:flex items-center gap-3">
-          <div className="aura aura-rainbow duration-2000">
+        <div className="hidden lg:flex items-center gap-3">
+          <div className="aura aura-white duration-2000">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -176,7 +176,7 @@ const Navbar = () => {
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={`px-4 py-3 rounded-xl text-sm font-semibold transition flex items-center justify-between ${
                       isActive
-                        ? "bg-gradient-to-r from-indigo-600/30 to-purple-600/30 text-white border border-indigo-500/30"
+                        ? "bg-linear-to-r from-indigo-600/30 to-purple-600/30 text-white border border-indigo-500/30"
                         : "text-slate-300 hover:bg-white/5 hover:text-white"
                     }`}
                   >
@@ -192,7 +192,7 @@ const Navbar = () => {
                 href={personalInfo.resumeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold shadow-lg"
+                className="mt-3 flex items-center justify-center gap-2 py-3 rounded-xl bg-linear-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold shadow-lg"
               >
                 <FaFileDownload />
                 <span>View Resume</span>
