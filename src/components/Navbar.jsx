@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { personalInfo } from '../data/portfolioData';
-import { FaFileDownload, FaBars, FaTimes } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { personalInfo } from "../data/portfolioData";
+import { FaFileDownload, FaBars, FaTimes } from "react-icons/fa";
+import "./component.css";
 
 const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Education', href: '#educations' },
-  { name: 'Contact', href: '#contact' }
+  { name: "Home", href: "#home" },
+  { name: "About", href: "#about" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
+  { name: "Education", href: "#educations" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -27,7 +28,7 @@ const Navbar = () => {
       }
 
       // ScrollSpy
-      const sections = navItems.map(item => item.href.substring(1));
+      const sections = navItems.map((item) => item.href.substring(1));
       const scrollPosition = window.scrollY + 160;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -39,16 +40,16 @@ const Navbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (e, href) => {
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       const targetElement = document.querySelector(href);
       if (targetElement) {
         e.preventDefault();
-        targetElement.scrollIntoView({ behavior: 'smooth' });
+        targetElement.scrollIntoView({ behavior: "smooth" });
         setActiveSection(href.substring(1));
         setMobileMenuOpen(false);
       }
@@ -59,18 +60,18 @@ const Navbar = () => {
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'backdrop-blur-xl bg-[#070b19]/85 border-b border-white/10 shadow-lg shadow-black/30 py-3'
-          : 'bg-transparent py-5'
+          ? "backdrop-blur-xl bg-[#070b19]/85 border-b border-white/10 shadow-lg shadow-black/30 py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="container mx-auto px-5 sm:px-8 max-w-7xl flex items-center justify-between">
         {/* Brand Logo */}
-        <a 
+        <a
           href="#home"
-          onClick={(e) => handleNavClick(e, '#home')}
+          onClick={(e) => handleNavClick(e, "#home")}
           className="flex items-center gap-3 group cursor-pointer"
         >
           <div className="relative">
@@ -105,8 +106,8 @@ const Navbar = () => {
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
                   isActive
-                    ? 'text-white'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    ? "text-white"
+                    : "text-slate-400 hover:text-white hover:bg-white/5"
                 }`}
               >
                 {isActive && (
@@ -124,17 +125,19 @@ const Navbar = () => {
 
         {/* Action Button */}
         <div className="hidden sm:flex items-center gap-3">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={personalInfo.resumeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 border border-white/20 transition-all"
-          >
-            <FaFileDownload className="text-xs" />
-            <span>Resume</span>
-          </motion.a>
+          <div className="aura aura-rainbow duration-2000">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href={personalInfo.resumeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 rounded-full text-xs font-semibold tracking-wide bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-white shadow-lg shadow-indigo-600/25 hover:shadow-indigo-600/40 border border-white/20 transition-all"
+            >
+              <FaFileDownload className="text-xs" />
+              <span>Resume</span>
+            </motion.a>
+          </div>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -144,7 +147,11 @@ const Navbar = () => {
             aria-label="Toggle menu"
             className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition"
           >
-            {mobileMenuOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
+            {mobileMenuOpen ? (
+              <FaTimes className="text-lg" />
+            ) : (
+              <FaBars className="text-lg" />
+            )}
           </button>
         </div>
       </div>
@@ -154,7 +161,7 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-[#070b19]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 shadow-2xl overflow-hidden"
@@ -169,12 +176,14 @@ const Navbar = () => {
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={`px-4 py-3 rounded-xl text-sm font-semibold transition flex items-center justify-between ${
                       isActive
-                        ? 'bg-gradient-to-r from-indigo-600/30 to-purple-600/30 text-white border border-indigo-500/30'
-                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                        ? "bg-gradient-to-r from-indigo-600/30 to-purple-600/30 text-white border border-indigo-500/30"
+                        : "text-slate-300 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     <span>{item.name}</span>
-                    {isActive && <span className="w-2 h-2 rounded-full bg-indigo-400"></span>}
+                    {isActive && (
+                      <span className="w-2 h-2 rounded-full bg-indigo-400"></span>
+                    )}
                   </a>
                 );
               })}

@@ -21,7 +21,7 @@ export const personalInfo = {
     whatsapp: "https://wa.me/8801979727030",
   },
   resumeLink: "https://drive.google.com/file/d/1tx5oGiqFOalmWjOKx183b3DoCfTXCySV/view?usp=sharing",
-  about: "I am a dedicated Software Developer with experience in building responsive and user-friendly web applications. I work with modern technologies including React.js, JavaScript, Tailwind CSS, FastAPI, and Node.js. I enjoy solving problems, learning new technologies, and building practical software solutions.",
+  about: "I’m Asad Ullah Shamim, an aspiring Software Developer and AI/ML Engineer passionate about building software and solving real-world problems. My programming journey began in 2024 through self-learning on YouTube, starting with HTML, CSS, and JavaScript. I later completed the Web Development Course by Programming Hero and joined Phitron to strengthen my Software Engineering fundamentals. Coming from a non-CSE background, I’m now focused on Programming, Software Engineering, AI/ML, and problem-solving, while continuously building practical projects. My long-term goal is to become a skilled Software Developer and Technology Entrepreneur who turns ideas into useful, impactful solutions.",
   stats: [
     { label: "Years Experience", value: "1+" },
     { label: "Core Projects", value: "3+" },
